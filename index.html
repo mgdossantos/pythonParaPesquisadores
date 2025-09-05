@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python para Pesquisadores - Curso Online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="gradient-bg text-white">
+        <div class="container mx-auto px-6 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl font-bold mb-4">Python para Pesquisadores</h1>
+                <p class="text-xl mb-2 opacity-90">Curso completo de 6 semanas</p>
+                <p class="text-lg opacity-80">Iniciante absoluto • 2h/semana • Ministrado por pesquisadora</p>
+                <div class="bg-white bg-opacity-20 rounded-lg p-4 mt-6 mb-2">
+                    <p class="text-xl font-semibold">🗓️ Início: 18 de setembro às 20h (horário de Brasília)</p>
+                </div>
+                <div class="mt-8">
+                    <button class="bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
+                        Inscreva-se Agora
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Formato do Curso -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Formato do Curso</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover">
+                    <div class="text-4xl mb-4">📅</div>
+                    <h3 class="text-xl font-semibold mb-2">Duração</h3>
+                    <p class="text-gray-600">6 semanas<br>2h/semana • Iniciante absoluto</p>
+                </div>
+                <div class="text-center p-6 bg-green-50 rounded-lg card-hover">
+                    <div class="text-4xl mb-4">💬</div>
+                    <h3 class="text-xl font-semibold mb-2">Suporte</h3>
+                    <p class="text-gray-600">Grupo no Whastapp para tira-dúvidas</p>
+                    <p class="text-gray-600">Plantão ao vivo - Semana 3 (30 min)</p>
+                </div>
+                <div class="text-center p-6 bg-purple-50 rounded-lg card-hover">
+                    <div class="text-4xl mb-4">🛠️</div>
+                    <h3 class="text-xl font-semibold mb-2">Ferramentas</h3>
+                    <p class="text-gray-600">Google Colab + pandas, numpy<br>matplotlib, seaborn, scipy</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
+                    Inscreva-se Agora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projeto Contínuo -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">Projeto Contínuo</h2>
+                <div class="bg-white p-8 rounded-lg shadow-lg">
+                    <div class="text-5xl mb-4">📊</div>
+                    <h3 class="text-2xl font-semibold mb-4">WDI-ResearchPack 2000–2023</h3>
+                    <p class="text-lg text-gray-600 leading-relaxed">
+                        Base única para toda a turma com dados de países, regiões, expectativa de vida,
+                        usuários de internet, PIB per capita, CO₂ per capita e mais. Um notebook evolui
+                        a cada semana até um <strong>mini-relatório reprodutível</strong> — sem nota, foco prático!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cronograma -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Cronograma Semanal</h2>
+
+            <!-- Semana 1 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-blue-800 mb-3">Semana 1 — Python Essencial + Primeira EDA</h3>
+                    <p class="text-blue-700 font-semibold mb-4">Objetivo: abrir a base, entender colunas e ganhar fluência mínima</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• Colab (células/markdown/estrutura)</li>
+                                <li>• Variáveis/listas/dicionários no contexto de dados</li>
+                                <li>• read_csv, head/info/describe</li>
+                                <li>• Renomear colunas, tipos</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v1 + mini codebook (markdown)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 2 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-green-800 mb-3">Semana 2 — Limpeza I: valores ausentes, duplicatas, tipos</h3>
+                    <p class="text-green-700 font-semibold mb-4">Objetivo: tornar o dataset confiável</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• Estratégias para NaN</li>
+                                <li>• Tratamento de duplicatas</li>
+                                <li>• Coerência de tipos (datas/números)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v2 (dataset limpo + checklist)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 3 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-purple-800 mb-3">Semana 3 — Limpeza II + Tabelas + Gráficos básicos</h3>
+                    <p class="text-purple-700 font-semibold mb-4">Objetivo: consolidar entendimento e comunicar padrões simples</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• query, loc, groupby, agregações</li>
+                                <li>• Tabelas de frequência e cross-tabs</li>
+                                <li>• Gráficos base (barras, hist, linha, scatter)</li>
+                                <li>• Rótulos/eixos legíveis</li>
+                                <li>• <strong>Plantão integrado (30 min)</strong></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v3 (tabelas + 3 gráficos comentados)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 4 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-orange-800 mb-3">Semana 4 — Testes Estatísticos básicos + Report</h3>
+                    <p class="text-orange-700 font-semibold mb-4">Objetivo: comparar grupos/variáveis com método correto</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• Mapa de decisão (t-test vs qui-quadrado)</li>
+                                <li>• scipy.stats, suposições</li>
+                                <li>• Como reportar estatística + p-valor</li>
+                                <li>• Comparação completa na prática</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v4 + parágrafo de resultados</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 5 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-indigo-800 mb-3">Semana 5 — Visualização de nível de artigo</h3>
+                    <p class="text-indigo-700 font-semibold mb-4">Objetivo: produzir figuras publicáveis e coerentes</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• Seaborn avançado (boxplot/violin, scatter)</li>
+                                <li>• Heatmap de correlação</li>
+                                <li>• Estética para artigo (dpi, fontes, paleta)</li>
+                                <li>• Layout e anotações profissionais</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v5 + pasta /outputs/figures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Semana 6 -->
+            <div class="max-w-4xl mx-auto mb-8">
+                <div class="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg card-hover">
+                    <h3 class="text-2xl font-bold text-teal-800 mb-3">Semana 6 — Automação leve + Exportação + Mini-relatório</h3>
+                    <p class="text-teal-700 font-semibold mb-4">Objetivo: rodar o fluxo inteiro e gerar saídas compartilháveis</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
+                            <ul class="text-gray-700 space-y-1">
+                                <li>• Pipeline "ler → limpar → analisar → plotar"</li>
+                                <li>• Parametrização simples (ano/região)</li>
+                                <li>• Exportar tabelas (Excel) e figuras (PNG/PDF)</li>
+                                <li>• Organização de pastas e requirements.txt</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Entregável:</h4>
+                            <p class="text-gray-700">Notebook v6_final + mini-relatório</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
+                    Inscreva-se Agora
+                </button>
+                <p class="mt-3 text-gray-600">🗓️ Início: 18 de setembro às 20h (Brasília)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre a Professora -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Sobre a Professora</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-lg shadow-lg">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="w-32 h-32 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
+                           <img src="./images/marcela.jpg" alt="Marcela dos Santos" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4 border-4 border-blue-100">
+                        </div>
+                        <div class="flex-1 text-center md:text-left">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Dra. Marcela dos Santos</h3>
+                            <p class="text-lg text-gray-600 mb-4">
+                                Professora de computação com 14+ anos de experiência, tendo lecionado no Brasil e no Canadá.
+                                Doutoranda em Ciência da Computação (UQAC, Canadá), onde aplica Python na pesquisa em testes
+                                de software para sistemas robóticos. Autora de publicações científicas e participante de
+                                iniciativas educacionais com empresas como Intel e Google.
+                            </p>
+                            <div class="grid md:grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <h4 class="font-semibold text-purple-700 mb-2">Formação & Pesquisa:</h4>
+                                    <ul class="text-gray-600 space-y-1">
+                                        <li>• Engenheira de Computação</li>
+                                        <li>• M.Sc. em Engenharia Elétrica</li>
+                                        <li>• Doutoranda em Ciência da Computação (UQAC)</li>
+                                        <li>• Pesquisa em testes de software para robôs</li>
+                                        <li>• Projetos com Intel e Google</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold text-blue-700 mb-2">Experiência Docente:</h4>
+                                    <ul class="text-gray-600 space-y-1">
+                                        <li>• 14+ anos ensinando no Brasil e Canadá</li>
+                                        <li>• Universidades e cursos livres</li>
+                                        <li>• Metodologia prática com dados reais</li>
+                                        <li>• Python aplicado à pesquisa</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Materiais Bônus -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Materiais & Bônus</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <div class="text-3xl mb-3">⚡</div>
+                    <h3 class="font-semibold mb-2">Guia Rápido</h3>
+                    <p class="text-gray-600 text-sm">Python para Pesquisa em 10 comandos</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <div class="text-3xl mb-3">📝</div>
+                    <h3 class="font-semibold mb-2">Modelo</h3>
+                    <p class="text-gray-600 text-sm">Mini-relatório com exemplos</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <div class="text-3xl mb-3">✅</div>
+                    <h3 class="font-semibold mb-2">Checklist</h3>
+                    <p class="text-gray-600 text-sm">Reprodutibilidade completa</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
+                    <div class="text-3xl mb-3">📚</div>
+                    <h3 class="font-semibold mb-2">Dicionário</h3>
+                    <p class="text-gray-600 text-sm">Dados WDI-ResearchPack</p>
+                </div>
+            </div>
+            <div class="text-center mt-12">
+                <button class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
+                    Inscreva-se Agora
+                </button>
+                <p class="mt-3 text-gray-600">🗓️ Início: 18 de setembro às 20h (Brasília)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Preços -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Investimento</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-lg shadow-lg text-center">
+                    <div class="mb-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Curso Completo - 6 Semanas</h3>
+                        <p class="text-gray-600">Acesso a todas as aulas, materiais e suporte</p>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-3xl mb-2">🇧🇷</div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Brasil</h4>
+                            <div class="text-3xl font-bold text-purple-600">R$ 497</div>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <div class="text-3xl mb-2">🇨🇦</div>
+                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Canadá</h4>
+                            <div class="text-3xl font-bold text-purple-600">CA$ 119</div>
+                        </div>
+                    </div>
+
+                    <div class="text-sm text-gray-600 mb-6">
+                        <p>✓ 6 semanas de conteúdo prático (2h/semana)</p>
+                        <p>✓ Plantão integrado na Semana 3</p>
+                        <p>✓ Todos os materiais e bônus inclusos</p>
+                        <p>✓ Certificado de participação</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4">Pronto para começar sua jornada?</h2>
+            <p class="text-xl mb-8 opacity-90">
+                Aprenda Python de forma prática, sem pressão, focado em resultados reais para pesquisa
+            </p>
+            <button class="bg-white text-purple-600 px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition duration-300 shadow-lg">
+                Inscreva-se Agora
+            </button>
+            <p class="mt-4 opacity-75">Ministrado por pesquisadora • Experiência real • Foco prático</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2024 Python para Pesquisadores. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Animação dos botões
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 150);
+            });
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97a796b15582a2f0',t:'MTc1NzA5NDgzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
