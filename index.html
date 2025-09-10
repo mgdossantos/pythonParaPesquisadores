@@ -1,397 +1,623 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python para Pesquisadores - Curso Online</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .card-hover { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Python para Pesquisadores</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@400;700&family=Roboto:wght@400;700&family=Gloria+Hallelujah&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --main-bg: #fdf6e3;
+      --main-blue: #1e3a8a;
+      --main-red: #e74c3c;
+      --card-bg: #fff;
+      --border-radius: 1.5rem;
+      --shadow: 0 4px 28px rgba(30,58,138,0.10);
+    }
+    body {
+      background: var(--main-bg);
+      margin: 0;
+      font-family: 'Montserrat', 'Open Sans', 'Roboto', 'Gloria Hallelujah', sans-serif;
+      color: var(--main-blue);
+    }
+    a { color: var(--main-red); text-decoration: none; }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.4rem;
+    }
+    header {
+      background: linear-gradient(120deg, var(--main-blue) 60%, var(--main-red) 100%);
+      color: #fff;
+      padding: 4rem 0 3rem 0;
+      text-align: center;
+      border-bottom-left-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+    .header-title {
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      font-size: 4.2rem;
+      line-height: 1.1;
+      margin-bottom: 1.4rem;
+      font-weight: bold;
+    }
+    .header-sub {
+      font-size: 1.3rem;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      opacity: 0.95;
+      margin-bottom: 1.1rem;
+    }
+    .header-desc {
+      font-size: 1.1rem;
+      font-family: 'Open Sans', 'Roboto', sans-serif;
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+    .main-btn, button {
+      background: var(--main-red);
+      color: #fff;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      font-weight: 700;
+      border: none;
+      padding: 1rem 2.5rem;
+      border-radius: var(--border-radius);
+      font-size: 1.2rem;
+      margin-top: 1.3rem;
+      box-shadow: var(--shadow);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.13s;
+    }
+    .main-btn:hover, button:hover {
+      background: var(--main-blue);
+      color: #fff;
+      transform: scale(0.97);
+    }
+
+    section {
+      padding: 3.3rem 0;
+    }
+    h2 {
+      font-size: 2.3rem;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      text-align: center;
+      margin-bottom: 2.3rem;
+      font-weight: 700;
+      color: var(--main-blue);
+    }
+    .cards {
+      display: flex;
+      gap: 1.7rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.2rem 1.5rem;
+      flex: 1 1 260px;
+      min-width: 220px;
+      max-width: 340px;
+      text-align: center;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-7px) scale(1.015);
+      box-shadow: 0 7px 30px rgba(30,58,138,0.14);
+    }
+    .card-icon {
+      font-size: 2.3rem;
+      margin-bottom: 0.7rem;
+    }
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      font-family: 'Montserrat', 'Roboto', sans-serif;
+      margin-bottom: 0.4rem;
+    }
+    .card-text {
+      font-size: 1.07rem;
+      font-family: 'Open Sans', 'Roboto', sans-serif;
+      color: var(--main-blue);
+      opacity: 0.97;
+    }
+
+    .timeline {
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+    .timeline-step {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 1.7rem;
+      padding: 2rem 1.5rem;
+      border-left: 8px solid var(--main-blue);
+    }
+    .timeline-step.red { border-left-color: var(--main-red); }
+    .timeline-step .step-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: var(--main-blue);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-step.red .step-title { color: var(--main-red); }
+    .timeline-step .step-sub {
+      font-size: 1.09rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--main-blue);
+    }
+    .timeline-step.red .step-sub { color: var(--main-red);}
+    .timeline-step ul {
+      margin: 0 0 0.2rem 1.1rem;
+      padding: 0;
+      list-style-type: disc;
+      color: var(--main-blue);
+      font-size: 1rem;
+      font-family: 'Open Sans', 'Roboto', sans-serif;
+    }
+    .timeline-step .step-deliver {
+      margin-top: 0.85rem;
+      font-size: 1.01rem;
+      color: var(--main-blue);
+    }
+
+    .project-section {
+      background: var(--main-red);
+      color: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.1rem 1.3rem;
+      margin-bottom: 2rem;
+      max-width: 650px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .project-section strong {
+      color: #ffe;
+    }
+
+    .about-section {
+      background: linear-gradient(90deg, #e74c3c 0%, #1e3a8a 100%);
+      color: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.3rem 1.7rem;
+      max-width: 870px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.2rem;
+      align-items: center;
+    }
+    .about-avatar {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(30,58,138,0.09);
+      border: 3px solid #dbeafe;
+      margin: auto;
+    }
+    .about-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .about-info {
+      flex: 1 1 260px;
+      min-width: 230px;
+    }
+    .about-info h3 {
+      margin-top: 0;
+      font-size: 1.38rem;
+      font-weight: bold;
+      margin-bottom: 0.7rem;
+    }
+    .about-info p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .bonus-cards {
+      display: flex;
+      gap: 1.1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .bonus-card {
+      background: var(--main-bg);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 1.4rem 1.1rem;
+      flex: 1 1 180px;
+      min-width: 150px;
+      max-width: 220px;
+      text-align: center;
+      border: 2px solid var(--main-blue);
+      margin-bottom: 1rem;
+    }
+    .bonus-card.red { border-color: var(--main-red);}
+    .bonus-card .card-icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .bonus-card .card-title { font-size: 1.09rem; font-weight: bold; margin-bottom: 0.2rem;}
+
+    .price-section {
+      max-width: 700px;
+      margin: 0 auto 2rem auto;
+      background: linear-gradient(90deg, #e74c3c 0%, #1e3a8a 100%);
+      color: #fff;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      padding: 2.1rem 1.7rem 2.5rem 1.7rem;
+      text-align: center;
+    }
+    .price-cards {
+      display: flex;
+      gap: 1.2rem;
+      margin: 2.3rem 0 2.3rem 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .price-card {
+      background: var(--main-bg);
+      border-radius: var(--border-radius);
+      color: var(--main-blue);
+      box-shadow: var(--shadow);
+      flex: 1 1 210px;
+      min-width: 160px;
+      max-width: 260px;
+      padding: 1.3rem 1rem;
+      margin-bottom: 1rem;
+    }
+    .price-card.red { color: var(--main-red); }
+    .price-card .country { font-size: 1.15rem; font-weight: 700; margin-bottom: 0.2rem;}
+    .price-card .price { font-size: 1.7rem; font-weight: bold; margin-bottom: 0.6rem;}
+    .price-section ul {
+      font-size: 1rem;
+      margin: 0 auto 1rem auto;
+      display: inline-block;
+      text-align:left;
+      color: #fff;
+      opacity: 0.95;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, var(--main-blue) 60%, var(--main-red) 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2.7rem 0 2.7rem 0;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin: 3.2rem 0 1.5rem 0;
+    }
+    .cta-section .cta-title {
+      font-size: 2.1rem;
+      font-family: 'Gloria Hallelujah', cursive;
+      font-weight: bold;
+      margin-bottom: 1.1rem;
+    }
+    .cta-section .cta-desc {
+      font-size: 1.17rem;
+      font-family: 'Open Sans', 'Roboto', sans-serif;
+      margin-bottom: 2.1rem;
+      opacity: 0.95;
+    }
+    .cta-section .main-btn {
+      background: #fff;
+      color: var(--main-red);
+      font-weight: bold;
+      font-size: 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cta-section .main-btn:hover {
+      background: var(--main-blue);
+      color: #fff;
+    }
+
+    footer {
+      background: var(--main-blue);
+      color: #fff;
+      text-align: center;
+      padding: 1.8rem 0;
+      font-size: 1.03rem;
+      margin-top: 3rem;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+      box-shadow: 0 -2px 13px rgba(30,58,138,0.09);
+    }
+
+    @media (max-width: 800px) {
+      .cards, .bonus-cards, .about-content, .price-cards { flex-direction: column; }
+      .container { padding: 0 0.3rem;}
+      .about-section { padding: 1.3rem 0.5rem;}
+      .project-section { padding: 1.3rem 0.6rem;}
+      .price-section { padding: 1.2rem 0.6rem;}
+      section { padding: 2.2rem 0;}
+      .header-title { font-size: 2.3rem; }
+    }
+  </style>
 </head>
-<body class="bg-gray-50">
-    <!-- Header -->
-    <header class="gradient-bg text-white">
-        <div class="container mx-auto px-6 py-16">
-            <div class="text-center">
-                <h1 class="text-5xl font-bold mb-4">Python para Pesquisadores</h1>
-                <p class="text-xl mb-2 opacity-90">Curso completo de 6 semanas</p>
-                <p class="text-lg opacity-80">Iniciante absoluto • 2h/semana • Ministrado por pesquisadora</p>
-                <div class="bg-white bg-opacity-20 rounded-lg p-4 mt-6 mb-2">
-                    <p class="text-xl font-semibold">🗓️ Início: 18/09 (Quintas-Feira) - 15h as 17h (horário de Brasília)</p>
-                </div>
-                <div class="mt-8">
-                    <button onclick="openGoogleForm()" class="bg-yellow-400 text-gray-900 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition duration-300 shadow-lg">
-                        Inscreva-se Agora
-                    </button>
-                </div>
-            </div>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-title">Python para Pesquisadores</div>
+      <div class="header-sub">Comece a analisar dados e automatizar tarefas da sua pesquisa com Python!</div>
+      <div class="header-desc">Iniciante absoluto • 2h/semana • Ministrado por pesquisadora</div>
+      <button class="main-btn" onclick="openGoogleForm()">Entrar agora!</button>
+    </div>
+  </header>
+
+  <!-- Formato do Curso -->
+  <section>
+    <div class="container">
+      <h2>Formato do Curso</h2>
+      <div class="cards">
+        <div class="card">
+          <div class="card-icon">📅</div>
+          <div class="card-title">Duração</div>
+          <div class="card-text">6 semanas<br>2h/semana • Iniciante absoluto</div>
         </div>
-    </header>
-
-    <!-- Formato do Curso -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Formato do Curso</h2>
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="text-center p-6 bg-blue-50 rounded-lg card-hover">
-                    <div class="text-4xl mb-4">📅</div>
-                    <h3 class="text-xl font-semibold mb-2">Duração</h3>
-                    <p class="text-gray-600">6 semanas<br>2h/semana • Iniciante absoluto</p>
-                </div>
-                <div class="text-center p-6 bg-green-50 rounded-lg card-hover">
-                    <div class="text-4xl mb-4">💬</div>
-                    <h3 class="text-xl font-semibold mb-2">Suporte</h3>
-                    <p class="text-gray-600">Grupo no Whastapp para tira-dúvidas</p>
-                    <p class="text-gray-600">Plantão ao vivo - Semana 3 (30 min)</p>
-                </div>
-                <div class="text-center p-6 bg-purple-50 rounded-lg card-hover">
-                    <div class="text-4xl mb-4">🛠️</div>
-                    <h3 class="text-xl font-semibold mb-2">Ferramentas</h3>
-                    <p class="text-gray-600">Google Colab + pandas, numpy<br>matplotlib, seaborn, scipy</p>
-                </div>
-            </div>
-
+        <div class="card">
+          <div class="card-icon">💬</div>
+          <div class="card-title">Suporte</div>
+          <div class="card-text">Grupo no Whatsapp para tira-dúvidas<br>Plantão ao vivo - Semana 3 (30 min)</div>
         </div>
-    </section>
-
-    <!-- Projeto Contínuo -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <div class="max-w-4xl mx-auto text-center">
-                <h2 class="text-3xl font-bold mb-8 text-gray-800">Projeto Contínuo</h2>
-                <div class="bg-white p-8 rounded-lg shadow-lg">
-                    <div class="text-5xl mb-4">📊</div>
-                    <h3 class="text-2xl font-semibold mb-4">WDI-ResearchPack 2000–2023</h3>
-                    <p class="text-lg text-gray-600 leading-relaxed">
-                        Base única para toda a turma com dados de países, regiões, expectativa de vida,
-                        usuários de internet, PIB per capita, CO₂ per capita e mais. Um notebook evolui
-                        a cada semana até um <strong>mini-relatório reprodutível</strong> — sem nota, foco prático!
-                    </p>
-                </div>
-            </div>
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <div class="card-title">Ferramentas</div>
+          <div class="card-text">Google Colab + pandas, numpy<br>matplotlib, seaborn, scipy</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Cronograma -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Cronograma Semanal</h2>
-
-            <!-- Semana 1 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-blue-800 mb-3">Semana 1 — Python Essencial + Primeira EDA</h3>
-                    <p class="text-blue-700 font-semibold mb-4">Objetivo: abrir a base, entender colunas e ganhar fluência mínima</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• Colab (células/markdown/estrutura)</li>
-                                <li>• Variáveis/listas/dicionários no contexto de dados</li>
-                                <li>• read_csv, head/info/describe</li>
-                                <li>• Renomear colunas, tipos</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v1 + mini codebook (markdown)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Semana 2 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-green-800 mb-3">Semana 2 — Limpeza I: valores ausentes, duplicatas, tipos</h3>
-                    <p class="text-green-700 font-semibold mb-4">Objetivo: tornar o dataset confiável</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• Estratégias para NaN</li>
-                                <li>• Tratamento de duplicatas</li>
-                                <li>• Coerência de tipos (datas/números)</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v2 (dataset limpo + checklist)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Semana 3 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-purple-50 border-l-4 border-purple-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-purple-800 mb-3">Semana 3 — Limpeza II + Tabelas + Gráficos básicos</h3>
-                    <p class="text-purple-700 font-semibold mb-4">Objetivo: consolidar entendimento e comunicar padrões simples</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• query, loc, groupby, agregações</li>
-                                <li>• Tabelas de frequência e cross-tabs</li>
-                                <li>• Gráficos base (barras, hist, linha, scatter)</li>
-                                <li>• Rótulos/eixos legíveis</li>
-                                <li>• <strong>Plantão integrado (30 min)</strong></li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v3 (tabelas + 3 gráficos comentados)</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Semana 4 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-orange-800 mb-3">Semana 4 — Testes Estatísticos básicos + Report</h3>
-                    <p class="text-orange-700 font-semibold mb-4">Objetivo: comparar grupos/variáveis com método correto</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• Mapa de decisão (t-test vs qui-quadrado)</li>
-                                <li>• scipy.stats, suposições</li>
-                                <li>• Como reportar estatística + p-valor</li>
-                                <li>• Comparação completa na prática</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v4 + parágrafo de resultados</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Semana 5 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-indigo-800 mb-3">Semana 5 — Visualização de nível de artigo</h3>
-                    <p class="text-indigo-700 font-semibold mb-4">Objetivo: produzir figuras publicáveis e coerentes</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• Seaborn avançado (boxplot/violin, scatter)</li>
-                                <li>• Heatmap de correlação</li>
-                                <li>• Estética para artigo (dpi, fontes, paleta)</li>
-                                <li>• Layout e anotações profissionais</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v5 + pasta /outputs/figures</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Semana 6 -->
-            <div class="max-w-4xl mx-auto mb-8">
-                <div class="bg-teal-50 border-l-4 border-teal-500 p-6 rounded-r-lg card-hover">
-                    <h3 class="text-2xl font-bold text-teal-800 mb-3">Semana 6 — Automação leve + Exportação + Mini-relatório</h3>
-                    <p class="text-teal-700 font-semibold mb-4">Objetivo: rodar o fluxo inteiro e gerar saídas compartilháveis</p>
-                    <div class="grid md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="font-semibold mb-2">Conteúdo:</h4>
-                            <ul class="text-gray-700 space-y-1">
-                                <li>• Pipeline "ler → limpar → analisar → plotar"</li>
-                                <li>• Parametrização simples (ano/região)</li>
-                                <li>• Exportar tabelas (Excel) e figuras (PNG/PDF)</li>
-                                <li>• Organização de pastas e requirements.txt</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h4 class="font-semibold mb-2">Entregável:</h4>
-                            <p class="text-gray-700">Notebook v6_final + mini-relatório</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <button onclick="openGoogleForm()" class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
-                    Inscreva-se Agora
-                </button>
-                <p class="mt-3 text-gray-600">🗓️ Início: 18/09 (Quintas-Feira) - 15h as 17h (horário de Brasília)</p>
-                <p class="mt-3 text-gray-600">Aulas gravadas e disponíveis por 30 dias (a partir do inicio do curso)</p>
-
-            </div>
+  <!-- Projeto Contínuo -->
+  <section>
+    <div class="container">
+      <h2>Projeto Contínuo</h2>
+      <div class="project-section">
+        <div style="font-size:2.2rem;margin-bottom:1rem;">📊</div>
+        <div style="font-size:1.15rem;font-weight:bold;margin-bottom:0.7rem;">WDI-ResearchPack 2000–2023</div>
+        <div>
+          Base única para toda a turma com dados de países, regiões, expectativa de vida,
+          usuários de internet, PIB per capita, CO₂ per capita e mais. Um notebook evolui
+          a cada semana até um <strong>mini-relatório reprodutível</strong> —  foco prático!
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Sobre a Professora -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Sobre a Professora</h2>
-            <div class="max-w-4xl mx-auto">
-                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-lg shadow-lg">
-                    <div class="flex flex-col md:flex-row items-center gap-8">
-                        <div class="w-32 h-32 bg-gradient-to-br from-purple-400 to-blue-500 rounded-full flex items-center justify-center text-white text-4xl font-bold">
-                           <img src="./images/marcela.jpg" alt="Marcela dos Santos" class="w-32 h-32 rounded-full object-cover shadow-lg mb-4 border-4 border-blue-100">
-                        </div>
-                        <div class="flex-1 text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">Dra. Marcela dos Santos</h3>
-                            <p class="text-lg text-gray-600 mb-4">
-                                Professora de computação com 14+ anos de experiência, tendo lecionado no Brasil e no Canadá.
-                                Doutoranda em Ciência da Computação (UQAC, Canadá), onde aplica Python na pesquisa em testes
-                                de software para sistemas robóticos. Autora de publicações científicas e participante de
-                                iniciativas educacionais com empresas como Intel e Google.
-                            </p>
-                            <div class="grid md:grid-cols-2 gap-4 text-sm">
-                                <div>
-                                    <h4 class="font-semibold text-purple-700 mb-2">Formação & Pesquisa:</h4>
-                                    <ul class="text-gray-600 space-y-1">
-                                        <li>• Engenheira de Computação</li>
-                                        <li>• M.Sc. em Engenharia Elétrica</li>
-                                        <li>• Doutoranda em Ciência da Computação (UQAC)</li>
-                                        <li>• Pesquisa em testes de software para robôs</li>
-                                        <li>• Projetos com Intel e Google</li>
-                                    </ul>
-                                </div>
-                                <div>
-                                    <h4 class="font-semibold text-blue-700 mb-2">Experiência Docente:</h4>
-                                    <ul class="text-gray-600 space-y-1">
-                                        <li>• 14+ anos ensinando no Brasil e Canadá</li>
-                                        <li>• Universidades e cursos livres</li>
-                                        <li>• Metodologia prática com dados reais</li>
-                                        <li>• Python aplicado à pesquisa</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- Cronograma Semanal -->
+  <section>
+    <div class="container">
+      <h2>Cronograma Semanal</h2>
+      <div class="timeline">
+        <!-- Semana 1 -->
+        <div class="timeline-step">
+          <div class="step-title">Semana 1 — Python Essencial + Primeira EDA</div>
+          <div class="step-sub">Objetivo: abrir a base, entender colunas e ganhar fluência mínima</div>
+          <ul>
+            <li>Colab (células/markdown/estrutura)</li>
+            <li>Variáveis/listas/dicionários no contexto de dados</li>
+            <li>read_csv, head/info/describe</li>
+            <li>Renomear colunas, tipos</li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v1 + mini codebook (markdown)</div>
         </div>
-    </section>
-
-    <!-- Materiais Bônus -->
-    <section class="py-16 bg-gray-100">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Materiais & Bônus</h2>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
-                    <div class="text-3xl mb-3">⚡</div>
-                    <h3 class="font-semibold mb-2">Guia Rápido</h3>
-                    <p class="text-gray-600 text-sm">Python para Pesquisa em 10 comandos</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
-                    <div class="text-3xl mb-3">📝</div>
-                    <h3 class="font-semibold mb-2">Modelo</h3>
-                    <p class="text-gray-600 text-sm">Mini-relatório com exemplos</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
-                    <div class="text-3xl mb-3">✅</div>
-                    <h3 class="font-semibold mb-2">Checklist</h3>
-                    <p class="text-gray-600 text-sm">Reprodutibilidade completa</p>
-                </div>
-                <div class="bg-white p-6 rounded-lg shadow-md text-center card-hover">
-                    <div class="text-3xl mb-3">📚</div>
-                    <h3 class="font-semibold mb-2">Dicionário</h3>
-                    <p class="text-gray-600 text-sm">Dados WDI-ResearchPack</p>
-                </div>
-            </div>
-            <div class="text-center mt-12">
-                <button onclick="openGoogleForm()" class="bg-purple-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-purple-700 transition duration-300 shadow-lg">
-                    Inscreva-se Agora
-                </button>
-                <p class="mt-3 text-gray-600">🗓️ Início: 18/09 (Quintas-Feira) 15h as 17h (horário de Brasília)</p>
-                <p class="mt-3 text-gray-600">Aulas gravadas e disponíveis por 30 dias (a partir do inicio do curso)</p>
-            </div>
+        <!-- Semana 2 -->
+        <div class="timeline-step red">
+          <div class="step-title">Semana 2 — Limpeza I: valores ausentes, duplicatas, tipos</div>
+          <div class="step-sub">Objetivo: tornar o dataset confiável</div>
+          <ul>
+            <li>Estratégias para NaN</li>
+            <li>Tratamento de duplicatas</li>
+            <li>Coerência de tipos (datas/números)</li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v2 (dataset limpo + checklist)</div>
         </div>
-    </section>
-
-    <!-- Preços -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Investimento</h2>
-            <div class="max-w-2xl mx-auto">
-                <div class="bg-gradient-to-r from-purple-50 to-blue-50 p-8 rounded-lg shadow-lg text-center">
-                    <div class="mb-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-4">Curso Completo - 6 Semanas</h3>
-                        <p class="text-gray-600">Acesso a todas as aulas, materiais e suporte</p>
-                    </div>
-
-                    <div class="grid md:grid-cols-2 gap-6 mb-8">
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="text-3xl mb-2">🇧🇷</div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Brasil</h4>
-                            <div class="text-3xl font-bold text-purple-600">R$ 497</div>
-                        </div>
-                        <div class="bg-white p-6 rounded-lg shadow-md">
-                            <div class="text-3xl mb-2">🇨🇦</div>
-                            <h4 class="text-lg font-semibold text-gray-700 mb-2">Canadá</h4>
-                            <div class="text-3xl font-bold text-purple-600">CA$ 119</div>
-                        </div>
-                    </div>
-
-                    <div class="text-sm text-gray-600 mb-6">
-                        <p>✓ 6 semanas de conteúdo prático (2h/semana)</p>
-                        <p>✓ Plantão integrado na Semana 3</p>
-                        <p>✓ Todos os materiais e bônus inclusos</p>
-                        <p>✓ Todos as aulas serão gravadas e disponibilziadas</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Semana 3 -->
+        <div class="timeline-step">
+          <div class="step-title">Semana 3 — Limpeza II + Tabelas + Gráficos básicos</div>
+          <div class="step-sub">Objetivo: consolidar entendimento e comunicar padrões simples</div>
+          <ul>
+            <li>query, loc, groupby, agregações</li>
+            <li>Tabelas de frequência e cross-tabs</li>
+            <li>Gráficos base (barras, hist, linha, scatter)</li>
+            <li>Rótulos/eixos legíveis</li>
+            <li><strong>Plantão integrado (30 min)</strong></li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v3 (tabelas + 3 gráficos comentados)</div>
         </div>
-    </section>
+        <!-- Semana 4 -->
+        <div class="timeline-step red">
+          <div class="step-title">Semana 4 — Testes Estatísticos básicos + Report</div>
+          <div class="step-sub">Objetivo: comparar grupos/variáveis com método correto</div>
+          <ul>
+            <li>Mapa de decisão (t-test vs qui-quadrado)</li>
+            <li>scipy.stats, suposições</li>
+            <li>Como reportar estatística + p-valor</li>
+            <li>Comparação completa na prática</li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v4 + parágrafo de resultados</div>
+        </div>
+        <!-- Semana 5 -->
+        <div class="timeline-step">
+          <div class="step-title">Semana 5 — Visualização de nível de artigo</div>
+          <div class="step-sub">Objetivo: produzir figuras publicáveis e coerentes</div>
+          <ul>
+            <li>Seaborn avançado (boxplot/violin, scatter)</li>
+            <li>Heatmap de correlação</li>
+            <li>Estética para artigo (dpi, fontes, paleta)</li>
+            <li>Layout e anotações profissionais</li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v5 + pasta /outputs/figures</div>
+        </div>
+        <!-- Semana 6 -->
+        <div class="timeline-step red">
+          <div class="step-title">Semana 6 — Automação leve + Exportação + Mini-relatório</div>
+          <div class="step-sub">Objetivo: rodar o fluxo inteiro e gerar saídas compartilháveis</div>
+          <ul>
+            <li>Pipeline "ler → limpar → analisar → plotar"</li>
+            <li>Parametrização simples (ano/região)</li>
+            <li>Exportar tabelas (Excel) e figuras (PNG/PDF)</li>
+            <li>Organização de pastas e requirements.txt</li>
+          </ul>
+          <div class="step-deliver">Entregável: Notebook v6_final + mini-relatório</div>
+        </div>
+      </div>
+      <div style="text-align:center;margin-top:2.3rem;">
+        <button class="main-btn" onclick="openGoogleForm()">EU QUERO USAR PYTHON NA MINHA PESQUISA</button>
+      </div>
+    </div>
+  </section>
 
-    <!-- CTA Final -->
-    <section class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4">Pronto para começar sua jornada?</h2>
-            <p class="text-xl mb-8 opacity-90">
-                Aprenda Python de forma prática, sem pressão, focado em resultados reais para pesquisa
+    <!-- Materiais & Bônus -->
+  <section>
+    <div class="container">
+      <h2>Materiais & Bônus</h2>
+      <div class="bonus-cards">
+        <div class="bonus-card">
+          <div class="card-icon">⚡</div>
+          <div class="card-title">Guia Rápido</div>
+          <div class="card-text">Python para Pesquisa em 10 comandos</div>
+        </div>
+        <div class="bonus-card red">
+          <div class="card-icon">📝</div>
+          <div class="card-title">Modelo</div>
+          <div class="card-text">Mini-relatório com exemplos</div>
+        </div>
+        <div class="bonus-card">
+          <div class="card-icon">✅</div>
+          <div class="card-title">Checklist</div>
+          <div class="card-text">Reprodutibilidade completa</div>
+        </div>
+        <div class="bonus-card red">
+          <div class="card-icon">📚</div>
+          <div class="card-title">Dicionário</div>
+          <div class="card-text">Dados WDI-ResearchPack</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Investimento -->
+  <section>
+    <div class="container">
+      <h2>Investimento</h2>
+      <div class="price-section">
+        <div style="font-size:1.2rem;font-weight:bold;margin-bottom:1rem;">Curso Completo - 6 Semanas</div>
+        <div style="margin-bottom:1.3rem;">Acesso a todas as aulas, materiais e suporte</div>
+        <div class="price-cards">
+          <div class="price-card">
+            <div style="font-size:2rem;">🇧🇷</div>
+            <div class="country">Brasil</div>
+            <div class="price red">R$ 497</div>
+          </div>
+          <div class="price-card red">
+            <div style="font-size:2rem;">🇨🇦</div>
+            <div class="country">Canadá</div>
+            <div class="price red">CA$ 119</div>
+          </div>
+        </div>
+        <ul>
+          <li>✓ 6 semanas de conteúdo prático (2h/semana)</li>
+          <li>✓ Plantão integrado na Semana 3</li>
+          <li>✓ Todos os materiais e bônus inclusos</li>
+          <li>✓ Todas as aulas serão gravadas e disponibilizadas</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+  <div class="container">
+    <div class="project-section" style="background: var(--main-blue); color: #fff; text-align: center;">
+      <h2 style="color:#fff; margin-bottom:1rem;">Ainda está com dúvidas?</h2>
+      <p style="font-size:1.15rem;">
+        Se você quer conversar diretamente comigo para tirar dúvidas sobre o curso, clique no botão abaixo e fale comigo no WhatsApp!
+      </p>
+      <a href="https://wa.me/14388853987" target="_blank" rel="noopener" style="display:inline-block; margin-top:2rem;">
+        <button class="main-btn" style="background:var(--main-red);color:#fff;font-size:1.1rem;">
+          Conversar pelo WhatsApp
+        </button>
+      </a>
+      <div style="margin-top:1rem;opacity:0.8;">Respondo pessoalmente :)</div>
+    </div>
+  </div>
+</section>
+  <!-- Sobre a Professora -->
+  <section>
+    <div class="container">
+      <h2>Sobre a Professora</h2>
+      <div class="about-section">
+        <div class="about-content">
+          <div class="about-avatar">
+            <img src="./images/marcela.jpg" alt="Marcela dos Santos">
+          </div>
+          <div class="about-info">
+            <h3>Marcela dos Santos</h3>
+            <p>
+             Sou professora há mais de 14 anos, doutoranda em Ciência da Computação no Canadá e criadora de conteúdo apaixonada
+              por ensinar. Minha missão? Tornar a tecnologia mais simples e acessível para quem acha que “não nasceu pra isso”.</p>
+            <p>
+              Minha jornada com a programação começou bem antes da moda do “aprender a codar”, e desde então já ensinei centenas
+              de pessoas a darem seus primeiros passos no mundo da tecnologia — de iniciantes curiosos a pesquisadores que hoje
+              usam Python para turbinar seus projetos.</p>
+            <p>
+            Ao longo do caminho, tive a oportunidade de trabalhar em projetos educacionais com gigantes como Intel e Google e
+              descobrir algo que mudou a minha forma de ensinar: não importa o quão complexa seja a tecnologia, o segredo
+              é explicar de um jeito que faça sentido para você.</p>
+            <p>
+              Hoje, além de dar aulas, crio conteúdos para ajudar professores, pesquisadores e profissionais que querem usar IA e
+              programação para ganhar mais autonomia, economizar tempo e transformar a forma como trabalham.</p>
+            <p>
+            Se você acha que programação não é pra você, te prometo uma coisa: com a estratégia certa e um pouco de prática,
+              você vai se surpreender com o que é capaz de criar. 🚀 </p>
+            <p>Bora aprender juntos?
             </p>
-            <button onclick="openGoogleForm()" class="bg-white text-purple-600 px-10 py-4 rounded-lg font-bold text-xl hover:bg-gray-100 transition duration-300 shadow-lg">
-                Inscreva-se Agora
-            </button>
-            <p class="mt-4 opacity-75">Ministrado por pesquisadora • Experiência real • Foco prático</p>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>&copy; 2024 Python para Pesquisadores. Todos os direitos reservados.</p>
+
+
+  <!-- CTA Final -->
+  <section>
+    <div class="container">
+      <div class="cta-section">
+        <div class="cta-title">Pronto para começar sua jornada?</div>
+        <div class="cta-desc">
+          Aprenda Python de forma prática, sem pressão, focado em resultados reais para pesquisa
         </div>
-    </footer>
+        <button class="main-btn" onclick="openGoogleForm()">Inscreva-se Agora</button>
+        <div style="margin-top:1rem;font-size:1rem;opacity:0.85;">
+          Ministrado por pesquisadora • Experiência real • Foco prático
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <script>
-        // Smooth scroll para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-           // Google Form integration
-        function openGoogleForm() {
-            window.open('https://forms.gle/kvcUManT4kPK5B4n8', '_blank');
-        }
-
-        // Animação dos botões
-        document.querySelectorAll('button').forEach(button => {
-            button.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
-        });
-    </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97a796b15582a2f0',t:'MTc1NzA5NDgzMi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      &copy; 2025 Python para Pesquisadores. Todos os direitos reservados.
+    </div>
+  </footer>
+  <script>
+    function openGoogleForm() {
+      window.open('https://forms.gle/kvcUManT4kPK5B4n8', '_blank');
+    }
+  </script>
+</body>
 </html>
