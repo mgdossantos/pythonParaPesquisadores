@@ -335,6 +335,7 @@
       box-shadow: 0 -2px 13px rgba(30,58,138,0.09);
     }
 
+    /* ---- MOBILE RESPONSIVE ---- */
     @media (max-width: 800px) {
       .cards, .bonus-cards, .about-content, .price-cards { flex-direction: column; }
       .container { padding: 0 0.3rem;}
@@ -343,6 +344,31 @@
       .price-section { padding: 1.2rem 0.6rem;}
       section { padding: 2.2rem 0;}
       .header-title { font-size: 2.3rem; }
+      h2 { font-size: 1.5rem; }
+      .card, .price-card, .bonus-card {
+        min-width: unset;
+        max-width: unset;
+        width: 100%;
+        margin-right: 0;
+        margin-left: 0;
+      }
+      .timeline-step { padding: 1.2rem 0.7rem;}
+      .about-avatar { width: 90px; height: 90px; }
+      .about-info { min-width: unset; }
+      footer { font-size: 0.92rem; padding: 1.1rem 0;}
+      .cta-section { padding: 1.5rem 0;}
+      .cta-section .cta-title { font-size: 1.15rem; }
+      .cta-section .cta-desc { font-size: 1rem; }
+      .main-btn, button { font-size: 1.05rem; padding: 0.8rem 1.5rem;}
+      .header-desc, .header-sub { font-size: 1rem; }
+      .project-section { font-size: 0.96rem;}
+    }
+    @media (max-width: 500px) {
+      .container { padding: 0 0.07rem;}
+      header { padding: 2rem 0 1.2rem 0;}
+      .header-title { font-size: 1.25rem; }
+      .about-section, .project-section, .price-section { padding: 0.7rem 0.2rem;}
+      .timeline-step { padding: 0.7rem 0.2rem;}
     }
   </style>
 </head>
@@ -589,8 +615,6 @@
       </div>
     </div>
   </section>
-
-
 
   <!-- CTA Final -->
   <section>
